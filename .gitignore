@@ -91,3 +91,4 @@ gradle-app.setting
 ### Custom ###
 !/lib/*
 !netfig.jar
+!.idea/libraries
