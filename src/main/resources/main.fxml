@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="root" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.cmische.github.netfig.Controller">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="50.0" minHeight="50.0" vgrow="NEVER" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="450.0" vgrow="ALWAYS" />
+  </rowConstraints>
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="70.0">
+               <children>
+                  <Label minHeight="25.0" text="Username">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label minHeight="25.0" text="Password">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TextField />
+                  <TextField />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="140.0">
+               <children>
+                  <Label minHeight="25.0" text="IP Address">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label minHeight="25.0" text="Require Known Host">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TextField minHeight="25.0" />
+                  <CheckBox contentDisplay="GRAPHIC_ONLY" minHeight="25.0" mnemonicParsing="false" selected="true" text="CheckBox" />
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#onclick_btn_ssh" text="SSH" />
+         </children>
+      </HBox>
+      <TextArea fx:id="custext" maxHeight="1.7976931348623157E308" prefHeight="437.0" prefWidth="140.0" text="Hello World!&#10;" wrapText="true" GridPane.rowIndex="1" />
+   </children>
+</GridPane>
