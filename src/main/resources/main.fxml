@@ -12,41 +12,45 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="root" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.cmische.github.netfig.Controller">
+<GridPane fx:id="root" prefWidth="553.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.cmische.github.netfig.Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="50.0" minHeight="50.0" vgrow="NEVER" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="450.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="NEVER" />
   </rowConstraints>
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox>
          <children>
-            <VBox prefHeight="200.0" prefWidth="70.0">
+            <VBox>
                <children>
                   <Label minHeight="25.0" text="Username">
                      <font>
                         <Font size="14.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label minHeight="25.0" text="Password">
                      <font>
                         <Font size="14.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox>
                <children>
-                  <TextField />
-                  <TextField />
+                  <TextField fx:id="username" text="cisco" />
+                  <TextField fx:id="password" text="temppass" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="140.0">
+            <VBox>
                <children>
-                  <Label minHeight="25.0" text="IP Address">
+                  <Label minHeight="25.0" text="IP Address/Host">
                      <font>
                         <Font size="14.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label minHeight="25.0" text="Require Known Host">
                      <font>
                         <Font size="14.0" />
@@ -54,15 +58,16 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox>
                <children>
-                  <TextField minHeight="25.0" />
-                  <CheckBox contentDisplay="GRAPHIC_ONLY" minHeight="25.0" mnemonicParsing="false" selected="true" text="CheckBox" />
+                  <TextField fx:id="ipAddress" minHeight="25.0" text="10.1.10.162" />
+                  <CheckBox fx:id="validateKnownHost" contentDisplay="GRAPHIC_ONLY" minHeight="25.0" mnemonicParsing="false" text="CheckBox" />
                </children>
             </VBox>
             <Button mnemonicParsing="false" onAction="#onclick_btn_ssh" text="SSH" />
          </children>
       </HBox>
-      <TextArea fx:id="custext" maxHeight="1.7976931348623157E308" prefHeight="437.0" prefWidth="140.0" text="Hello World!&#10;" wrapText="true" GridPane.rowIndex="1" />
+      <TextArea fx:id="textOut" editable="false" text="Output comes out here&#10;" wrapText="true" GridPane.rowIndex="1" />
+      <TextArea fx:id="textIn" onKeyPressed="#onKeyPressed" text="Input goes here" GridPane.rowIndex="2" />
    </children>
 </GridPane>

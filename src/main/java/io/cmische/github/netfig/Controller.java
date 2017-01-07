@@ -1,29 +1,55 @@
 package io.cmische.github.netfig;
 
 
+import io.cmische.github.netfig.ssh.Credentials;
+import io.cmische.github.netfig.ssh.SSH;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Controller{
+public class Controller implements Initializable{
 
     @FXML // GUI handles declared in and injected by FXMLLoader
-    private TextArea custext;
-
+    public TextArea textOut;
+    private OutputConsole outputConsole;
+    @FXML // GUI handles declared in and injected by FXMLLoader
+    public TextArea textIn;
+    private InputConsole inputConsole;
     @FXML
-    private void onclick_btn_ssh(ActionEvent event) {
-        String value = ((Button)event.getSource()).getText();
-        custext.setText(custext.getText() + " Button!");
+    private TextField username;
+    @FXML
+    private TextField password;
+    @FXML
+    private TextField ipAddress;
+    @FXML
+    private CheckBox validateKnownHost;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        inputConsole = new InputConsole(textIn);
+        outputConsole = new OutputConsole(textOut);
     }
 
-    /*
-    @FXML // This method is called by the FXMLLoader when initialization is complete
-    public void initialize() {
-        assert custext != null : "fx:id=\"custext\" was not injected: check your FXML file 'main.fxml'.";
+    @FXML
+    private void onKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            inputConsole.q.add(textIn.getText());
+            textIn.setText("");
+            textIn.positionCaret(0);
+        }
+    }
 
-        // initialize your logic here: all @FXML variables will have been injected
+    @FXML
+    private void onclick_btn_ssh(/*ActionEvent event*/) {
+        Credentials credentials = new Credentials(ipAddress.getText(),username.getText(),password.getText(),validateKnownHost.isSelected());
+        SSH.login(credentials, inputConsole, outputConsole);
+    }
 
-    } */
 }
